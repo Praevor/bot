@@ -6,6 +6,9 @@ export default {
 		description: 'Ping!',
 	},
 	async execute(interaction) {
-		await interaction.reply('Pong!');
+		const res = await interaction.reply("Loading...");
+		const diff = res.createdTimestamp - interaction.createdTimestamp;
+		
+		await res.edit(`Round trip: ${String(diff)}`);
 	},
 } satisfies Command;

@@ -11,7 +11,12 @@ export default {
             const modalId = interaction.customId;
             
             switch (modalId) {
-                case "setupModal":  
+                case "setupModal":
+                    if (!interaction.guildId) {
+                        await interaction.reply({content: "This can be only used in servers", flags: "Ephemeral"});
+                        return;
+                    }    
+                
                     const role = interaction.fields.getSelectedRoles("managerRole")?.first();
                     
                     if (!role) {
@@ -23,14 +28,14 @@ export default {
                     const [server] = await db
                         .select()
                         .from(serversTable)
-                        .where(eq(serversTable.id, Number(interaction.guildId)))
+                        .where(eq(serversTable.id, interaction.guildId))
                         .limit(1);
                         
                     if (!server) {
                         await db
                             .insert(serversTable)
                             .values({
-                                id: Number(interaction.guildId),
+                                id: interaction.guildId,
                                 managerRoleId: role.id
                             });
                             

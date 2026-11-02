@@ -11,6 +11,9 @@ importers:
       '@discordjs/core':
         specifier: ^2.3.0
         version: 2.7.0
+      cryptr:
+        specifier: ^6.4.0
+        version: 6.4.0
       discord.js:
         specifier: ^14.24.0
         version: 14.28.0
@@ -1128,6 +1131,9 @@ packages:
   cross-spawn@7.0.6:
     resolution: {integrity: sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==}
     engines: {node: '>= 8'}
+
+  cryptr@6.4.0:
+    resolution: {integrity: sha512-9jpMU9HMt1vhMUqNO+MPuGEpbh/f7HHZdxrd6L2DMwTuYGyt9pgUJfQyTS1Ei4/sn7qPM4FkjxUoiW79k0x8sA==}
 
   cssesc@3.0.0:
     resolution: {integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==}
@@ -4370,6 +4376,8 @@ snapshots:
       path-key: 3.1.1
       shebang-command: 2.0.0
       which: 2.0.2
+
+  cryptr@6.4.0: {}
 
   cssesc@3.0.0: {}
 

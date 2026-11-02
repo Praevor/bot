@@ -1,0 +1,1 @@
+ALTER TABLE "servers" ALTER COLUMN "key" SET DATA TYPE text USING "key"::text;

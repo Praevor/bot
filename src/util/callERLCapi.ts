@@ -14,6 +14,9 @@ export async function callERLCapi(path: string, key: string, method: "GET" | "PO
     try {
         res = await fetch(url, {
             method,
+            headers: {
+                "server-key": key
+            },
             body: JSON.stringify(body)
         });
     } catch {

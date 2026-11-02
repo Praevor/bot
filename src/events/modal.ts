@@ -18,9 +18,10 @@ export default {
                     }    
                 
                     const role = interaction.fields.getSelectedRoles("managerRole")?.first();
+                    const modRole = interaction.fields.getSelectedRoles("moderatorRole")?.first();
                     
-                    if (!role) {
-                        await interaction.reply({content: "No role given", flags: "Ephemeral"});
+                    if (!role || !modRole) {
+                        await interaction.reply({content: "No role(s) given", flags: "Ephemeral"});
                         return;
                     }
                     
@@ -36,7 +37,8 @@ export default {
                             .insert(serversTable)
                             .values({
                                 id: interaction.guildId,
-                                managerRoleId: role.id
+                                managerRoleId: role.id,
+                                moderatorRoleId: modRole.id
                             });
                             
                         await interaction.reply({content: "Set up server!", flags: "Ephemeral"});
@@ -45,7 +47,7 @@ export default {
                     
                     await db
                         .update(serversTable)
-                        .set({managerRoleId: role.id})
+                        .set({managerRoleId: role.id, moderatorRoleId: modRole.id})
                         .where(eq(serversTable.id, server.id));
                         
                     await interaction.reply({content: "Updated server!", flags: "Ephemeral"})

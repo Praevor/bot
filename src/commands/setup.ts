@@ -27,7 +27,18 @@ export default {
             .setDescription("The role that can change the server's settings")
             .setRoleSelectMenuComponent(managerRoleInput);
             
-        modal.addLabelComponents(roleLabel);
+        const moderatorRoleInput = new RoleSelectMenuBuilder()
+            .setCustomId("moderatorRole")
+            .setPlaceholder("Select the moderator role")
+            .setMinValues(1)
+            .setMaxValues(1);
+            
+        const moderatorRoleLabel = new LabelBuilder()
+            .setLabel("Moderator role")
+            .setDescription("The role that can make logs")
+            .setRoleSelectMenuComponent(moderatorRoleInput);
+            
+        modal.addLabelComponents(roleLabel, moderatorRoleLabel);
         
         await interaction.showModal(modal);
     }

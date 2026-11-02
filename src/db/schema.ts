@@ -1,7 +1,7 @@
-import { pgTable, integer, varchar } from "drizzle-orm/pg-core";
+import { pgTable, varchar } from "drizzle-orm/pg-core";
 
 export const serversTable = pgTable("servers", {
-    id: integer().primaryKey().unique(), // discord server id
+    id: varchar({length: 255}).primaryKey().unique(), // discord server id
     key: varchar({length: 255}), // hashed server key
     managerRoleId: varchar({length: 255}),
 })

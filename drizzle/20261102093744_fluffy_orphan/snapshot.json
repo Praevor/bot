@@ -1,0 +1,39 @@
+{
+  "type": "diff",
+  "version": "9",
+  "dialect": "postgres",
+  "id": "e8ea2f67-995a-4976-9adf-c76363e6affd",
+  "prevIds": [
+    "2d552911-5326-4175-9dbc-e8ef963b04a5"
+  ],
+  "footprints": [
+    {
+      "statementType": "alter_column",
+      "statementTarget": [
+        "column",
+        "public",
+        "servers",
+        "id"
+      ],
+      "writes": [
+        "s|colprop|public.servers.id.type",
+        "s|colprop|public.servers.id.default"
+      ],
+      "reads": [
+        "n|tbl|public.servers",
+        "n|sch|public",
+        "n|col|public.servers.id"
+      ],
+      "sqlHash": "faa9e1657bfd5144"
+    }
+  ],
+  "deltas": [
+    {
+      "op": "alter",
+      "key": "columns\u0000[\"public\",\"servers\",\"id\"]",
+      "set": {
+        "type": "varchar(255)"
+      }
+    }
+  ]
+}

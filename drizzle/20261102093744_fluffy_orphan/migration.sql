@@ -1,0 +1,1 @@
+ALTER TABLE "servers" ALTER COLUMN "id" SET DATA TYPE varchar(255) USING "id"::varchar(255);

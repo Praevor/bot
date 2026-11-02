@@ -1,0 +1,1 @@
+ALTER TABLE "servers" ADD COLUMN "moderatorRoleId" varchar(255) NOT NULL;

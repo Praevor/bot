@@ -4,7 +4,7 @@ import { db } from '../db/index.js';
 import { serversTable } from '../db/schema.js';
 import { eq } from 'drizzle-orm';
 
-const cryptr = new Cryptr(process.env.SECRET!);
+export const cryptr = new Cryptr(process.env.SECRET!);
 
 export async function addKeyToDb(key: string, serverId: string): Promise<Result<string>> {
 	const [server] = await db.select().from(serversTable).where(eq(serversTable.id, serverId)).limit(1);

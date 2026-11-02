@@ -1,0 +1,1 @@
+ALTER TABLE "servers" ALTER COLUMN "managerRoleId" SET NOT NULL;

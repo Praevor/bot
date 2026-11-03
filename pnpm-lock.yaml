@@ -29,6 +29,9 @@ importers:
         specifier: ^0.35.5
         version: 0.35.5(@types/node@22.20.5)
     devDependencies:
+      '@eslint/js':
+        specifier: ^10.0.1
+        version: 10.0.1(eslint@9.39.5(supports-color@10.2.2))
       '@sapphire/ts-config':
         specifier: ^5.0.1
         version: 5.0.3
@@ -53,6 +56,9 @@ importers:
       eslint-formatter-pretty:
         specifier: ^7.0.0
         version: 7.1.0
+      globals:
+        specifier: ^17.14.0
+        version: 17.14.0
       lint-staged:
         specifier: ^17.6.0
         version: 17.6.0
@@ -65,6 +71,9 @@ importers:
       typescript:
         specifier: ~5.9.3
         version: 5.9.3
+      typescript-eslint:
+        specifier: ^8.72.1
+        version: 8.72.1(eslint@9.39.5(supports-color@10.2.2))(supports-color@10.2.2)(typescript@5.9.3)
       zod:
         specifier: ^3.25.76
         version: 3.25.76
@@ -497,6 +506,16 @@ packages:
     resolution:
       { integrity: sha512-F42g89Qd5oAWtp0k0nnSrjziAKza7w8SVT4mStc18LZMaRb4J1HQAHLCalEtDCxrTuksx7NU9qsmeLwpOfPqWw== }
     engines: { node: ^18.18.0 || ^20.9.0 || >=21.1.0 }
+
+  '@eslint/js@10.0.1':
+    resolution:
+      { integrity: sha512-zeR9k5pd4gxjZ0abRoIaxdc7I3nDktoXZk2qOv9gCNWx3mVwEn32VRhyLaRsDiJjTs0xq/T8mfPtyuXu7GWBcA== }
+    engines: { node: ^20.19.0 || ^22.13.0 || >=24 }
+    peerDependencies:
+      eslint: ^10.0.0
+    peerDependenciesMeta:
+      eslint:
+        optional: true
 
   '@eslint/js@9.39.5':
     resolution:
@@ -2451,6 +2470,11 @@ packages:
   globals@16.5.0:
     resolution:
       { integrity: sha512-c/c15i26VrJ4IRt5Z89DnIzCGDn9EcebibhAOjw5ibqEHsE1wLUgkPn9RDmNcUKyU87GeaL633nyJ+pplFR2ZQ== }
+    engines: { node: '>=18' }
+
+  globals@17.14.0:
+    resolution:
+      { integrity: sha512-UtdkTVyAJePQv0J2M9Xe4L0ruNSDV314XiIJsADI2Zf40bcdAonE/D/OhAU8AT99oij9mhLByb+NvA3QWZYgCg== }
     engines: { node: '>=18' }
 
   globalthis@1.0.4:
@@ -4590,6 +4614,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@eslint/js@10.0.1(eslint@9.39.5(supports-color@10.2.2))':
+    optionalDependencies:
+      eslint: 9.39.5(supports-color@10.2.2)
+
   '@eslint/js@9.39.5': {}
 
   '@eslint/object-schema@2.1.7': {}
@@ -6364,6 +6392,8 @@ snapshots:
   globals@15.15.0: {}
 
   globals@16.5.0: {}
+
+  globals@17.14.0: {}
 
   globalthis@1.0.4:
     dependencies:

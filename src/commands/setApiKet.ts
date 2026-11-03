@@ -37,13 +37,13 @@ export default {
 			interaction.reply({ content: "You don't have permissions to use this", flags: 'Ephemeral' });
 			return;
 		}
-        
-        const res = await addKeyToDb(apiKey, server.id);
-        
-        if (!res.ok) {
-            await interaction.reply({content: res.error, flags: "Ephemeral"});
-            return;
-        }
-        await interaction.reply({content: res.data, flags: "Ephemeral"})
+
+		const res = await addKeyToDb(apiKey, server.id);
+
+		if (!res.ok) {
+			await interaction.reply({ content: res.error, flags: 'Ephemeral' });
+			return;
+		}
+		await interaction.reply({ content: res.data, flags: 'Ephemeral' });
 	},
 } satisfies Command;

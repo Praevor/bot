@@ -1,38 +1,25 @@
 {
-  "type": "diff",
-  "version": "9",
-  "dialect": "postgres",
-  "id": "8c434018-102f-4cd9-9c78-b37669a76b36",
-  "prevIds": [
-    "e8ea2f67-995a-4976-9adf-c76363e6affd"
-  ],
-  "footprints": [
-    {
-      "statementType": "alter_column",
-      "statementTarget": [
-        "column",
-        "public",
-        "servers",
-        "managerRoleId"
-      ],
-      "writes": [
-        "s|colprop|public.servers.managerRoleId.notNull"
-      ],
-      "reads": [
-        "n|tbl|public.servers",
-        "n|sch|public",
-        "n|col|public.servers.managerRoleId"
-      ],
-      "sqlHash": "69faf3ba8a7e786d"
-    }
-  ],
-  "deltas": [
-    {
-      "op": "alter",
-      "key": "columns\u0000[\"public\",\"servers\",\"managerRoleId\"]",
-      "set": {
-        "notNull": true
-      }
-    }
-  ]
+	"type": "diff",
+	"version": "9",
+	"dialect": "postgres",
+	"id": "8c434018-102f-4cd9-9c78-b37669a76b36",
+	"prevIds": ["e8ea2f67-995a-4976-9adf-c76363e6affd"],
+	"footprints": [
+		{
+			"statementType": "alter_column",
+			"statementTarget": ["column", "public", "servers", "managerRoleId"],
+			"writes": ["s|colprop|public.servers.managerRoleId.notNull"],
+			"reads": ["n|tbl|public.servers", "n|sch|public", "n|col|public.servers.managerRoleId"],
+			"sqlHash": "69faf3ba8a7e786d"
+		}
+	],
+	"deltas": [
+		{
+			"op": "alter",
+			"key": "columns\u0000[\"public\",\"servers\",\"managerRoleId\"]",
+			"set": {
+				"notNull": true
+			}
+		}
+	]
 }

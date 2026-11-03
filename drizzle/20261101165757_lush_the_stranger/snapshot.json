@@ -1,72 +1,51 @@
 {
-  "type": "diff",
-  "version": "9",
-  "dialect": "postgres",
-  "id": "2d552911-5326-4175-9dbc-e8ef963b04a5",
-  "prevIds": [
-    "bddb2544-f860-42c2-83c8-10c0ea883f4b"
-  ],
-  "footprints": [
-    {
-      "statementType": "add_column",
-      "statementTarget": [
-        "column",
-        "public",
-        "servers",
-        "managerRoleId"
-      ],
-      "writes": [
-        "s|col|public.servers.managerRoleId",
-        "n|col|public.servers.managerRoleId",
-        "e|col|public.servers.managerRoleId"
-      ],
-      "reads": [
-        "n|tbl|public.servers",
-        "n|sch|public"
-      ]
-    },
-    {
-      "statementType": "alter_column",
-      "statementTarget": [
-        "column",
-        "public",
-        "servers",
-        "key"
-      ],
-      "writes": [
-        "s|colprop|public.servers.key.notNull"
-      ],
-      "reads": [
-        "n|tbl|public.servers",
-        "n|sch|public",
-        "n|col|public.servers.key"
-      ],
-      "sqlHash": "0aa848335af1cb70"
-    }
-  ],
-  "deltas": [
-    {
-      "op": "create",
-      "row": {
-        "schema": "public",
-        "table": "servers",
-        "name": "managerRoleId",
-        "type": "varchar(255)",
-        "typeSchema": null,
-        "notNull": false,
-        "dimensions": 0,
-        "default": null,
-        "generated": null,
-        "identity": null,
-        "entityType": "columns"
-      }
-    },
-    {
-      "op": "alter",
-      "key": "columns\u0000[\"public\",\"servers\",\"key\"]",
-      "set": {
-        "notNull": false
-      }
-    }
-  ]
+	"type": "diff",
+	"version": "9",
+	"dialect": "postgres",
+	"id": "2d552911-5326-4175-9dbc-e8ef963b04a5",
+	"prevIds": ["bddb2544-f860-42c2-83c8-10c0ea883f4b"],
+	"footprints": [
+		{
+			"statementType": "add_column",
+			"statementTarget": ["column", "public", "servers", "managerRoleId"],
+			"writes": [
+				"s|col|public.servers.managerRoleId",
+				"n|col|public.servers.managerRoleId",
+				"e|col|public.servers.managerRoleId"
+			],
+			"reads": ["n|tbl|public.servers", "n|sch|public"]
+		},
+		{
+			"statementType": "alter_column",
+			"statementTarget": ["column", "public", "servers", "key"],
+			"writes": ["s|colprop|public.servers.key.notNull"],
+			"reads": ["n|tbl|public.servers", "n|sch|public", "n|col|public.servers.key"],
+			"sqlHash": "0aa848335af1cb70"
+		}
+	],
+	"deltas": [
+		{
+			"op": "create",
+			"row": {
+				"schema": "public",
+				"table": "servers",
+				"name": "managerRoleId",
+				"type": "varchar(255)",
+				"typeSchema": null,
+				"notNull": false,
+				"dimensions": 0,
+				"default": null,
+				"generated": null,
+				"identity": null,
+				"entityType": "columns"
+			}
+		},
+		{
+			"op": "alter",
+			"key": "columns\u0000[\"public\",\"servers\",\"key\"]",
+			"set": {
+				"notNull": false
+			}
+		}
+	]
 }

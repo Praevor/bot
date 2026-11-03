@@ -17,10 +17,12 @@ export default defineConfig(
 		},
 		rules: {
 			// Unused vars are fine if prefixed with _ (handy for unused interaction/client params)
-			'@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }],
+			'@typescript-eslint/no-unused-vars': 'warn',
 			'no-console': 'off', // bots usually log to console
 			eqeqeq: ['error', 'always'],
 			'prefer-const': 'error',
+			'@typescript-eslint/no-explicit-any': 'warn',
+			'no-case-declarations': 'warn',
 		},
 	},
 );

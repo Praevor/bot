@@ -34,7 +34,7 @@ export async function callERLCapi(
 	if (!res.ok) {
 		if (!json.code) return { ok: false, error: 'ERLC api returned an error without a code' };
 		json.code = String(json.code);
-		if (json.code == '3002') return { ok: false, error: 'Server offline' };
+		if (json.code === '3002') return { ok: false, error: 'Server offline' };
 
 		switch (json.code.split()[0]) {
 			case '0':

@@ -4,6 +4,7 @@ import { getServerKey } from "../../util/getServerKey.js";
 import { callERLCapi } from "../../util/callERLCapi.js";
 import { Player } from "../../types/Player.js";
 import { locToMap } from "../../util/locToMap.js";
+import { Vehicle } from "../../types/Vehicle.js";
 
 export default {
     data: {
@@ -36,6 +37,7 @@ export default {
         
         const params = new URLSearchParams();
         params.append("Players", "true");
+        params.append("Vehicles", "true");
         
         const res = await callERLCapi("/v2/server", key.data, "GET", undefined, params);
         if (!res.ok) {
@@ -44,6 +46,7 @@ export default {
         }
         
         const players = res.data.body.Players as Player[];
+        const vehicles = res.data.body.Vehicles as Vehicle[];
         
         const player = players.find((p) => p.Player.split(":")[0] === username);
         if (!player) {
@@ -56,8 +59,11 @@ export default {
         const file = new AttachmentBuilder(locMap, {name: "loc.png"});
         
         const [name, id] = player.Player.split(":");
+        const vehicle = vehicles.find((v) => v.Owner === name);
+        
         const embed: APIEmbed = {
             title: name,
+            color: vehicle ? parseInt(vehicle.ColorHex.replace("#", ""), 16) : undefined,
             description: [
                 `**[Roblox Profile](https://roblox.com/users/${id})**`,
                 "**Team**",
@@ -65,7 +71,9 @@ export default {
                 "**Permissions**",
                 player.Permissions,
                 "**Wanted stars**",
-                player.WantedStars
+                player.WantedStars,
+                "**Vehicle**",
+                `${vehicle ? `${vehicle.Name} \n${vehicle.Plate} \n${vehicle.ColorName} \n${vehicle.Texture}` : "N/A"}`
             ].join("\n")
         };
         

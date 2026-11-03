@@ -1,3 +1,4 @@
+import { APIEmbed } from "discord.js";
 import { callERLCapi } from "../util/callERLCapi.js";
 import { getServerKey } from "../util/getServerKey.js";
 import { Command } from "./index.js";
@@ -20,7 +21,7 @@ export default {
             return;
         }
         
-        const neededThings = ["Players", "Queue"]
+        const neededThings = ["Queue"]
         const params = new URLSearchParams()
         params.append("Player", "true");
         neededThings.forEach((n) => params.append(n, "true"));
@@ -32,6 +33,31 @@ export default {
             return;
         }
         
-        await interaction.reply(JSON.stringify(res.data.body))
+        const server = res.data.body;
+        
+        const embed: APIEmbed = {
+            title: server.Name,
+            fields: [
+                {
+                    name: "Players",
+                    value: `${server.CurrentPlayers}/${server.MaxPlayers}`,
+                    inline: true
+                },
+                {
+                    name: "Join Code",
+                    value: server.JoinKey,
+                    inline: true
+                },
+                {
+                    name: "Queue",
+                    value: String(server.Queue?.length),
+                    inline: true
+                }
+            ],
+            footer: {text: "ERLC server status"},
+            author: {name: "Praevor", icon_url: "https://avatars.githubusercontent.com/u/350970298"}
+        }
+        
+        await interaction.reply({embeds: [embed]})
     }
 } satisfies Command

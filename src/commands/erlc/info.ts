@@ -1,7 +1,7 @@
 import { APIEmbed } from "discord.js";
-import { callERLCapi } from "../util/callERLCapi.js";
-import { getServerKey } from "../util/getServerKey.js";
-import { Command } from "./index.js";
+import { callERLCapi } from "../../util/callERLCapi.js";
+import { getServerKey } from "../../util/getServerKey.js";
+import { Command } from "../index.js";
 
 export default {
     data: {

@@ -63,7 +63,6 @@ export default {
         
         const embed: APIEmbed = {
             title: name,
-            color: vehicle ? parseInt(vehicle.ColorHex.replace("#", ""), 16) : undefined,
             description: [
                 `**[Roblox Profile](https://roblox.com/users/${id})**`,
                 "**Team**",

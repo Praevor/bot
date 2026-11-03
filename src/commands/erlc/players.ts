@@ -2,6 +2,7 @@ import { APIEmbed } from "discord.js";
 import { callERLCapi } from "../../util/callERLCapi.js";
 import { getServerKey } from "../../util/getServerKey.js";
 import { Command } from "../index.js";
+import { Player } from "../../types/Player.js";
 
 export default {
     data: {
@@ -31,20 +32,7 @@ export default {
             return;
         };
         
-        const players = res.data.body.Players as {
-            Team: string,
-            Player: string,
-            Callsign?: string,
-            Location: {
-                LocationX: number,
-                LocationZ: number,
-                PostalCode: string,
-                StreetName: string,
-                BuildingNumber: string
-            },
-            Permissions: string,
-            WantedStars: number
-        }[];
+        const players = res.data.body.Players as Player[];
         
         
         const embed: APIEmbed = {

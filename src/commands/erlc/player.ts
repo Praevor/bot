@@ -72,7 +72,7 @@ export default {
                 "**Wanted stars**",
                 player.WantedStars,
                 "**Vehicle**",
-                `${vehicle ? `${vehicle.Name} \n${vehicle.Plate} \n${vehicle.ColorName} \n${vehicle.Texture}` : "N/A"}`
+                `${vehicle ? `Name: ${vehicle.Name} \nPlate: ${vehicle.Plate} \nColor: ${vehicle.ColorName} \nTexture: ${vehicle.Texture ?? "N/A"}` : "N/A"}`
             ].join("\n")
         };
         

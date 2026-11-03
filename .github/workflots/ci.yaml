@@ -1,0 +1,41 @@
+name: CI
+
+permissions:
+  contents: read
+  actions: read
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  stuff:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 12.15.0
+
+      - name: set up node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: 'pnpm'
+
+      - name: set up things
+        run: |
+          pnpm i --frozen-lockfile
+          pnpm sync
+
+      - name: check formatting
+        run: pnpm format:check
+
+      - name: lint
+        run: pnpm lint
+
+      - name: build
+        run: pnpm build

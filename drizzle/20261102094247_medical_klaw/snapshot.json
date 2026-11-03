@@ -1,47 +1,37 @@
 {
-  "type": "diff",
-  "version": "9",
-  "dialect": "postgres",
-  "id": "91abf2ce-cec7-4b27-9da9-090cc4989c6d",
-  "prevIds": [
-    "8c434018-102f-4cd9-9c78-b37669a76b36"
-  ],
-  "footprints": [
-    {
-      "statementType": "add_column",
-      "statementTarget": [
-        "column",
-        "public",
-        "servers",
-        "moderatorRoleId"
-      ],
-      "writes": [
-        "s|col|public.servers.moderatorRoleId",
-        "n|col|public.servers.moderatorRoleId",
-        "e|col|public.servers.moderatorRoleId"
-      ],
-      "reads": [
-        "n|tbl|public.servers",
-        "n|sch|public"
-      ]
-    }
-  ],
-  "deltas": [
-    {
-      "op": "create",
-      "row": {
-        "schema": "public",
-        "table": "servers",
-        "name": "moderatorRoleId",
-        "type": "varchar(255)",
-        "typeSchema": null,
-        "notNull": true,
-        "dimensions": 0,
-        "default": null,
-        "generated": null,
-        "identity": null,
-        "entityType": "columns"
-      }
-    }
-  ]
+	"type": "diff",
+	"version": "9",
+	"dialect": "postgres",
+	"id": "91abf2ce-cec7-4b27-9da9-090cc4989c6d",
+	"prevIds": ["8c434018-102f-4cd9-9c78-b37669a76b36"],
+	"footprints": [
+		{
+			"statementType": "add_column",
+			"statementTarget": ["column", "public", "servers", "moderatorRoleId"],
+			"writes": [
+				"s|col|public.servers.moderatorRoleId",
+				"n|col|public.servers.moderatorRoleId",
+				"e|col|public.servers.moderatorRoleId"
+			],
+			"reads": ["n|tbl|public.servers", "n|sch|public"]
+		}
+	],
+	"deltas": [
+		{
+			"op": "create",
+			"row": {
+				"schema": "public",
+				"table": "servers",
+				"name": "moderatorRoleId",
+				"type": "varchar(255)",
+				"typeSchema": null,
+				"notNull": true,
+				"dimensions": 0,
+				"default": null,
+				"generated": null,
+				"identity": null,
+				"entityType": "columns"
+			}
+		}
+	]
 }

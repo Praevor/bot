@@ -11,7 +11,7 @@ async function getMap(): Promise<Buffer> {
     return Buffer.from(await res.arrayBuffer());
 }
 
-export async function getMapWithMark(x: number, z: number): Promise<Buffer> {
+export async function locToMap(x: number, z: number): Promise<Buffer> {
   const k = 1600 / MAP_SIZE;
 
     const px = (MAP_SIZE / 2 + x * SCALE) * k;

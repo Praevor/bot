@@ -1,7 +1,7 @@
 import { ApplicationCommandOptionType, ChatInputCommandInteraction } from 'discord.js';
-import { getServer } from '../util/getServer.js';
 import { Command } from './index.js';
 import { addKeyToDb } from '../util/addKeyToDb.js';
+import { getRank } from '../util/getRank.js';
 
 export default {
 	data: {
@@ -24,21 +24,16 @@ export default {
 			return;
 		}
 
-		const server = await getServer(interaction.guildId);
-		if (!server) {
-			await interaction.reply({ content: 'This server is not set up yet with /setup', flags: 'Ephemeral' });
+		const rank = await getRank(interaction);
+		if (!rank.ok) {
+			await interaction.reply({ content: rank.error, flags: 'Ephemeral' });
 			return;
 		}
-
-		if (!interaction.member) return;
-		if (!interaction.inCachedGuild()) return;
-
-		if (!interaction.member.roles.cache.has(server.managerRoleId)) {
-			interaction.reply({ content: "You don't have permissions to use this", flags: 'Ephemeral' });
-			return;
+		if (rank.data !== 'ADMIN' || rank.data !== 'MANAGER') {
+			await interaction.reply({ content: "You don't have perms to use this", flags: 'Ephemeral' });
 		}
 
-		const res = await addKeyToDb(apiKey, server.id);
+		const res = await addKeyToDb(apiKey, interaction.guildId);
 
 		if (!res.ok) {
 			await interaction.reply({ content: res.error, flags: 'Ephemeral' });

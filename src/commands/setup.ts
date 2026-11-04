@@ -1,5 +1,6 @@
-import { LabelBuilder, ModalBuilder, PermissionFlagsBits, RoleSelectMenuBuilder } from 'discord.js';
+import { LabelBuilder, ModalBuilder, RoleSelectMenuBuilder } from 'discord.js';
 import { Command } from './index.js';
+import { getRank } from '../util/getRank.js';
 
 export default {
 	data: {
@@ -7,8 +8,13 @@ export default {
 		description: 'Set up or edit the server',
 	},
 	async execute(interaction) {
-		if (!interaction.memberPermissions?.has(PermissionFlagsBits.Administrator)) {
-			await interaction.reply({ content: 'Only administrators can use this command', flags: 'Ephemeral' });
+		const rank = await getRank(interaction);
+		if (!rank.ok) {
+			await interaction.reply({ content: rank.error, flags: 'Ephemeral' });
+			return;
+		}
+		if (rank.data !== 'ADMIN') {
+			await interaction.reply({ content: "You don't have permissions for this", flags: 'Ephemeral' });
 			return;
 		}
 

@@ -42,6 +42,7 @@ export default {
 					},
 				],
 			});
+			return;
 		}
 
 		const [server] = await db

@@ -26,6 +26,7 @@ export async function callERLCapi(
 			headers: {
 				'server-key': key,
 				Authorization: auth,
+				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify(body),
 		});

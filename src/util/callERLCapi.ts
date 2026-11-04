@@ -7,6 +7,9 @@ export async function callERLCapi(
 	body?: object,
 	searchParams?: URLSearchParams,
 ): Promise<Result<{ status: string; body: object }>> {
+	const auth = process.env.AUTH;
+	if (!auth) throw new Error('No AUTH key in env');
+
 	const url = new URL(path, 'https://api.erlc.gg');
 
 	if (searchParams) {
@@ -22,6 +25,7 @@ export async function callERLCapi(
 			method,
 			headers: {
 				'server-key': key,
+				Authorization: auth,
 			},
 			body: JSON.stringify(body),
 		});

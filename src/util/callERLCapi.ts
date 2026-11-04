@@ -26,6 +26,7 @@ export async function callERLCapi(
 			headers: {
 				'server-key': key,
 				Authorization: auth,
+				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify(body),
 		});
@@ -42,7 +43,7 @@ export async function callERLCapi(
 
 		switch (json.code.split()[0]) {
 			case '0':
-				return { ok: false, error: 'Unknown error' };
+				return { ok: false, error: `Unknown error, status code: ${res.status}` };
 			case '1':
 				return { ok: false, error: 'Internal error' };
 			case '2':
@@ -54,7 +55,7 @@ export async function callERLCapi(
 			case '9':
 				return { ok: false, error: 'Internal error' };
 			default:
-				return { ok: false, error: 'Unknown error' };
+				return { ok: false, error: `Unknown error, status code: ${res.status}` };
 		}
 	}
 

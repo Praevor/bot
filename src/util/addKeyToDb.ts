@@ -3,6 +3,7 @@ import { Result } from '../types/Result.js';
 import { db } from '../db/index.js';
 import { serversTable } from '../db/schema.js';
 import { eq } from 'drizzle-orm';
+import { callERLCapi } from './callERLCapi.js';
 
 export const cryptr = new Cryptr(process.env.SECRET!);
 
@@ -11,19 +12,14 @@ export async function addKeyToDb(key: string, serverId: string): Promise<Result<
 
 	if (!server) return { ok: false, error: 'No server found' };
 
-	let res: Response | undefined;
-
+	let ok: boolean;
 	try {
-		res = await fetch('https://api.erlc.gg/v2/server', {
-			headers: {
-				'server-key': key,
-			},
-		});
+		ok = (await callERLCapi('/v2/server', key, 'GET')).ok;
 	} catch {
 		return { ok: false, error: 'Error while making request to ERLC api' };
 	}
 
-	if (!res.ok) return { ok: false, error: 'Invalid API key' };
+	if (!ok) return { ok: false, error: 'Invalid API key' };
 
 	const encryptedKey = cryptr.encrypt(key);
 

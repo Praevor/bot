@@ -1,10 +1,12 @@
-import { Interaction, PermissionFlagsBits } from 'discord.js';
+import { CommandInteraction, PermissionFlagsBits } from 'discord.js';
 import type { Result } from '../types/Result.js';
 import { db } from '../db/index.js';
 import { serversTable } from '../db/schema.js';
 import { eq } from 'drizzle-orm';
 
-export async function getRank(interaction: Interaction): Promise<Result<'USER' | 'MODERATOR' | 'MANAGER' | 'ADMIN'>> {
+export async function getRank(
+	interaction: CommandInteraction,
+): Promise<Result<'USER' | 'MODERATOR' | 'MANAGER' | 'ADMIN'>> {
 	if (!interaction.guildId) return { ok: false, error: 'You can only use this in a server' };
 
 	const [server] = await db.select().from(serversTable).where(eq(serversTable.id, interaction.guildId)).limit(1);

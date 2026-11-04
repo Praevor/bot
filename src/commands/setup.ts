@@ -1,4 +1,4 @@
-import { LabelBuilder, ModalBuilder, RoleSelectMenuBuilder } from 'discord.js';
+import { ChannelSelectMenuBuilder, LabelBuilder, ModalBuilder, RoleSelectMenuBuilder } from 'discord.js';
 import { Command } from './index.js';
 import { getRank } from '../util/getRank.js';
 
@@ -42,7 +42,18 @@ export default {
 			.setDescription('The role that can make logs')
 			.setRoleSelectMenuComponent(moderatorRoleInput);
 
-		modal.addLabelComponents(roleLabel, moderatorRoleLabel);
+		const logChannelInput = new ChannelSelectMenuBuilder()
+			.setCustomId('logChannel')
+			.setPlaceholder('The log channel')
+			.setMinValues(1)
+			.setMaxValues(1);
+
+		const logChannelLabel = new LabelBuilder()
+			.setLabel('Log Channel')
+			.setDescription('The channel you want to send the bot logs (not ERLC server logs)')
+			.setChannelSelectMenuComponent(logChannelInput);
+
+		modal.addLabelComponents(roleLabel, moderatorRoleLabel, logChannelLabel);
 
 		await interaction.showModal(modal);
 	},

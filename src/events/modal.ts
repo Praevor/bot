@@ -19,8 +19,9 @@ export default {
 
 					const role = interaction.fields.getSelectedRoles('managerRole')?.first();
 					const modRole = interaction.fields.getSelectedRoles('moderatorRole')?.first();
+					const logChannel = interaction.fields.getSelectedChannels('logChannel')?.first();
 
-					if (!role || !modRole) {
+					if (!role || !modRole || !logChannel) {
 						await interaction.reply({ content: 'No role(s) given', flags: 'Ephemeral' });
 						return;
 					}
@@ -36,6 +37,7 @@ export default {
 							id: interaction.guildId,
 							managerRoleId: role.id,
 							moderatorRoleId: modRole.id,
+							logChannelId: logChannel.id,
 						});
 
 						await interaction.reply({ content: 'Set up server!', flags: 'Ephemeral' });

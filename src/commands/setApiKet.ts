@@ -1,5 +1,4 @@
 import { ApplicationCommandOptionType, ChatInputCommandInteraction } from 'discord.js';
-import { getServer } from '../util/getServer.js';
 import { Command } from './index.js';
 import { addKeyToDb } from '../util/addKeyToDb.js';
 import { getRank } from '../util/getRank.js';

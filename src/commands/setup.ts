@@ -1,4 +1,4 @@
-import { LabelBuilder, ModalBuilder, PermissionFlagsBits, RoleSelectMenuBuilder } from 'discord.js';
+import { LabelBuilder, ModalBuilder, RoleSelectMenuBuilder } from 'discord.js';
 import { Command } from './index.js';
 import { getRank } from '../util/getRank.js';
 

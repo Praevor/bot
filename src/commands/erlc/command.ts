@@ -43,7 +43,7 @@ export default {
 			return;
 		}
 
-		const res = await callERLCapi('/v2/server/command', key.data, 'POST', { command });
+		const res = await callERLCapi('/v2/server/command', key.data, 'POST', { command: String(command) });
 		if (!res.ok) {
 			await interaction.editReply(res.error);
 			return;

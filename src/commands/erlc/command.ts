@@ -18,7 +18,7 @@ export default {
 		],
 	},
 	async execute(interaction) {
-		const command = (interaction as ChatInputCommandInteraction).options.get('command', true);
+		const command = (interaction as ChatInputCommandInteraction).options.getString('command', true);
 
 		await interaction.deferReply({ flags: 'Ephemeral' });
 
@@ -43,7 +43,7 @@ export default {
 			return;
 		}
 
-		const res = await callERLCapi('/v2/server/command', key.data, 'POST', { command: String(command) });
+		const res = await callERLCapi('/v2/server/command', key.data, 'POST', { command: command });
 		if (!res.ok) {
 			await interaction.editReply(res.error);
 			return;

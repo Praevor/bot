@@ -32,7 +32,7 @@ export default {
 			await interaction.editReply(rank.error);
 			return;
 		}
-		if (rank.data !== 'MANAGER' || rank.data !== 'ADMIN') {
+		if (rank.data !== 'MANAGER' && rank.data !== 'ADMIN') {
 			await interaction.editReply("You don't have permissions for this");
 			return;
 		}

@@ -5,4 +5,5 @@ export const serversTable = pgTable('servers', {
 	key: text('key'), // encrypted server key
 	managerRoleId: varchar({ length: 255 }).notNull(),
 	moderatorRoleId: varchar({ length: 255 }).notNull(),
+	logChannelId: varchar({ length: 255 }).notNull(),
 });

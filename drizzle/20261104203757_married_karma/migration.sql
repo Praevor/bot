@@ -1,0 +1,1 @@
+ALTER TABLE "servers" ADD COLUMN "logChannelId" varchar(255) NOT NULL;

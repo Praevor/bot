@@ -3,6 +3,7 @@ import type { Event } from './index.js';
 import { db } from '../db/index.js';
 import { serversTable } from '../db/schema.js';
 import { eq } from 'drizzle-orm';
+import { sendLog } from '../util/sendLog.js';
 
 export default {
 	name: Events.InteractionCreate,
@@ -40,15 +41,25 @@ export default {
 							logChannelId: logChannel.id,
 						});
 
+						await sendLog(
+							'Setup',
+							'The server has been set up! Set the ERLC API key with /set-api-key and authorize Praevor with /auth.',
+							interaction.guildId,
+						);
 						await interaction.reply({ content: 'Set up server!', flags: 'Ephemeral' });
 						return;
 					}
 
 					await db
 						.update(serversTable)
-						.set({ managerRoleId: role.id, moderatorRoleId: modRole.id })
+						.set({ managerRoleId: role.id, moderatorRoleId: modRole.id, logChannelId: logChannel.id })
 						.where(eq(serversTable.id, server.id));
 
+					await sendLog(
+						'Settings updated',
+						`Manager role: <@&${role.id}> \nModerator role: <@&${modRole.id}> \nLog channel <#${logChannel.id}>`,
+						interaction.guildId,
+					);
 					await interaction.reply({ content: 'Updated server!', flags: 'Ephemeral' });
 			}
 		}

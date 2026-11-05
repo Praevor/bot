@@ -1,0 +1,37 @@
+{
+	"type": "diff",
+	"version": "9",
+	"dialect": "postgres",
+	"id": "e5ae3965-c070-433a-b345-03986b1799f8",
+	"prevIds": ["860d2a29-b9bc-4d1d-8539-0a33eed0ea9e"],
+	"footprints": [
+		{
+			"statementType": "add_column",
+			"statementTarget": ["column", "public", "servers", "logChannelId"],
+			"writes": [
+				"s|col|public.servers.logChannelId",
+				"n|col|public.servers.logChannelId",
+				"e|col|public.servers.logChannelId"
+			],
+			"reads": ["n|tbl|public.servers", "n|sch|public"]
+		}
+	],
+	"deltas": [
+		{
+			"op": "create",
+			"row": {
+				"schema": "public",
+				"table": "servers",
+				"name": "logChannelId",
+				"type": "varchar(255)",
+				"typeSchema": null,
+				"notNull": true,
+				"dimensions": 0,
+				"default": null,
+				"generated": null,
+				"identity": null,
+				"entityType": "columns"
+			}
+		}
+	]
+}

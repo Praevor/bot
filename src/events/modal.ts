@@ -3,6 +3,7 @@ import type { Event } from './index.js';
 import { db } from '../db/index.js';
 import { serversTable } from '../db/schema.js';
 import { eq } from 'drizzle-orm';
+import { sendLog } from '../util/sendLog.js';
 
 export default {
 	name: Events.InteractionCreate,
@@ -19,8 +20,9 @@ export default {
 
 					const role = interaction.fields.getSelectedRoles('managerRole')?.first();
 					const modRole = interaction.fields.getSelectedRoles('moderatorRole')?.first();
+					const logChannel = interaction.fields.getSelectedChannels('logChannel')?.first();
 
-					if (!role || !modRole) {
+					if (!role || !modRole || !logChannel) {
 						await interaction.reply({ content: 'No role(s) given', flags: 'Ephemeral' });
 						return;
 					}
@@ -36,17 +38,28 @@ export default {
 							id: interaction.guildId,
 							managerRoleId: role.id,
 							moderatorRoleId: modRole.id,
+							logChannelId: logChannel.id,
 						});
 
+						await sendLog(
+							'Setup',
+							'The server has been set up! Set the ERLC API key with /set-api-key and authorize Praevor with /auth.',
+							interaction.guildId,
+						);
 						await interaction.reply({ content: 'Set up server!', flags: 'Ephemeral' });
 						return;
 					}
 
 					await db
 						.update(serversTable)
-						.set({ managerRoleId: role.id, moderatorRoleId: modRole.id })
+						.set({ managerRoleId: role.id, moderatorRoleId: modRole.id, logChannelId: logChannel.id })
 						.where(eq(serversTable.id, server.id));
 
+					await sendLog(
+						'Settings updated',
+						`Manager role: <@&${role.id}> \nModerator role: <@&${modRole.id}> \nLog channel <#${logChannel.id}> \nUpdated by: <@${interaction.member?.user.id}>`,
+						interaction.guildId,
+					);
 					await interaction.reply({ content: 'Updated server!', flags: 'Ephemeral' });
 			}
 		}

@@ -12,6 +12,7 @@ export async function getServer(id: string) {
 			id: serversTable.id,
 			managerRoleId: serversTable.managerRoleId,
 			moderatorRoleId: serversTable.moderatorRoleId,
+			logChannelId: serversTable.logChannelId,
 		})
 		.from(serversTable)
 		.where(eq(serversTable.id, id))

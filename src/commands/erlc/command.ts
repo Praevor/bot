@@ -3,6 +3,7 @@ import { Command } from '../index.js';
 import { getRank } from '../../util/getRank.js';
 import { getServerKey } from '../../util/getServerKey.js';
 import { callERLCapi } from '../../util/callERLCapi.js';
+import { sendLog } from '../../util/sendLog.js';
 
 export default {
 	data: {
@@ -49,6 +50,11 @@ export default {
 			return;
 		}
 
+		await sendLog(
+			'Command ran',
+			`Command: ${command} \nRan by: <@${interaction.member?.user.id}>`,
+			interaction.guildId,
+		);
 		await interaction.editReply('Ran command!');
 	},
 } satisfies Command;

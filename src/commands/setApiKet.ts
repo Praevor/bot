@@ -2,6 +2,7 @@ import { ApplicationCommandOptionType, ChatInputCommandInteraction } from 'disco
 import { Command } from './index.js';
 import { addKeyToDb } from '../util/addKeyToDb.js';
 import { getRank } from '../util/getRank.js';
+import { sendLog } from '../util/sendLog.js';
 
 export default {
 	data: {
@@ -39,6 +40,7 @@ export default {
 			await interaction.reply({ content: res.error, flags: 'Ephemeral' });
 			return;
 		}
+		await sendLog('Set API key', `The API key has been set by <@${interaction.member?.user.id}>`, interaction.guildId);
 		await interaction.reply({ content: res.data, flags: 'Ephemeral' });
 	},
 } satisfies Command;

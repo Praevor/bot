@@ -4,6 +4,7 @@ import { getRank } from '../util/getRank.js';
 import { db } from '../db/index.js';
 import { serversTable } from '../db/schema.js';
 import { eq } from 'drizzle-orm';
+import { sendLog } from '../util/sendLog.js';
 
 export default {
 	data: {
@@ -44,6 +45,12 @@ export default {
 			});
 			return;
 		}
+
+		await sendLog(
+			'Server reset',
+			`The server has been deleted from Praevor's databse by <@${interaction.member?.user.id}>`,
+			interaction.guildId!,
+		);
 
 		const [server] = await db
 			.select()

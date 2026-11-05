@@ -54,6 +54,8 @@ export default {
 			return;
 		}
 
+		await interaction.editReply('Making map... \n-# This might take a few seconds');
+
 		const locMap = await locToMap(player.Location.LocationX, player.Location.LocationZ);
 
 		const file = new AttachmentBuilder(locMap, { name: 'loc.png' });

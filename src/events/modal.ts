@@ -57,7 +57,7 @@ export default {
 
 					await sendLog(
 						'Settings updated',
-						`Manager role: <@&${role.id}> \nModerator role: <@&${modRole.id}> \nLog channel <#${logChannel.id}>`,
+						`Manager role: <@&${role.id}> \nModerator role: <@&${modRole.id}> \nLog channel <#${logChannel.id}> \nUpdated by: <@${interaction.member?.user.id}>`,
 						interaction.guildId,
 					);
 					await interaction.reply({ content: 'Updated server!', flags: 'Ephemeral' });

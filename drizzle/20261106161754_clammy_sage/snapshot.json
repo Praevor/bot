@@ -1,0 +1,149 @@
+{
+	"type": "diff",
+	"version": "9",
+	"dialect": "postgres",
+	"id": "89f65c31-9e56-45f9-9a31-96ca493810b5",
+	"prevIds": ["e5ae3965-c070-433a-b345-03986b1799f8"],
+	"footprints": [
+		{
+			"statementType": "create_table",
+			"statementTarget": ["table", "public", "moderations"],
+			"writes": [
+				"s|tbl|public.moderations",
+				"n|tbl|public.moderations",
+				"e|tbl|public.moderations",
+				"n|rel|public.moderations",
+				"n|type|public.moderations",
+				"n|rel|public.moderations_pkey"
+			],
+			"reads": ["n|sch|public"]
+		}
+	],
+	"deltas": [
+		{
+			"op": "create",
+			"row": {
+				"schema": "public",
+				"name": "moderations",
+				"isRlsEnabled": false,
+				"entityType": "tables"
+			}
+		},
+		{
+			"op": "create",
+			"row": {
+				"schema": "public",
+				"table": "moderations",
+				"name": "id",
+				"type": "integer",
+				"typeSchema": null,
+				"notNull": true,
+				"dimensions": 0,
+				"default": null,
+				"generated": null,
+				"identity": {
+					"type": "always",
+					"name": "moderations_id_seq",
+					"increment": "1",
+					"startWith": "1",
+					"minValue": "1",
+					"maxValue": "2147483647",
+					"cache": 1,
+					"cycle": false
+				},
+				"entityType": "columns"
+			}
+		},
+		{
+			"op": "create",
+			"row": {
+				"schema": "public",
+				"table": "moderations",
+				"name": "serverId",
+				"type": "varchar(255)",
+				"typeSchema": null,
+				"notNull": true,
+				"dimensions": 0,
+				"default": null,
+				"generated": null,
+				"identity": null,
+				"entityType": "columns"
+			}
+		},
+		{
+			"op": "create",
+			"row": {
+				"schema": "public",
+				"table": "moderations",
+				"name": "robloxUsername",
+				"type": "varchar(255)",
+				"typeSchema": null,
+				"notNull": true,
+				"dimensions": 0,
+				"default": null,
+				"generated": null,
+				"identity": null,
+				"entityType": "columns"
+			}
+		},
+		{
+			"op": "create",
+			"row": {
+				"schema": "public",
+				"table": "moderations",
+				"name": "robloxId",
+				"type": "varchar(255)",
+				"typeSchema": null,
+				"notNull": true,
+				"dimensions": 0,
+				"default": null,
+				"generated": null,
+				"identity": null,
+				"entityType": "columns"
+			}
+		},
+		{
+			"op": "create",
+			"row": {
+				"schema": "public",
+				"table": "moderations",
+				"name": "punishmentType",
+				"type": "text",
+				"typeSchema": null,
+				"notNull": true,
+				"dimensions": 0,
+				"default": null,
+				"generated": null,
+				"identity": null,
+				"entityType": "columns"
+			}
+		},
+		{
+			"op": "create",
+			"row": {
+				"schema": "public",
+				"table": "moderations",
+				"name": "moderatorId",
+				"type": "varchar(255)",
+				"typeSchema": null,
+				"notNull": true,
+				"dimensions": 0,
+				"default": null,
+				"generated": null,
+				"identity": null,
+				"entityType": "columns"
+			}
+		},
+		{
+			"op": "create",
+			"row": {
+				"schema": "public",
+				"table": "moderations",
+				"name": "moderations_pkey",
+				"columns": ["id"],
+				"nameExplicit": false,
+				"entityType": "pks"
+			}
+		}
+	]
+}

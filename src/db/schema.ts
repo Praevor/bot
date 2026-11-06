@@ -15,4 +15,5 @@ export const moderationsTable = pgTable('moderations', {
 	robloxId: varchar({ length: 255 }).notNull(),
 	punishmentType: text('punishmentType', { enum: ['WARNING', 'KICK', 'BAN'] }).notNull(),
 	moderatorId: varchar({ length: 255 }).notNull(),
+	reason: varchar({ length: 255 }).notNull(),
 });

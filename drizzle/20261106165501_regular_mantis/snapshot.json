@@ -1,0 +1,37 @@
+{
+	"type": "diff",
+	"version": "9",
+	"dialect": "postgres",
+	"id": "bf9790bf-aa25-4ba8-9697-492edc181ea8",
+	"prevIds": ["89f65c31-9e56-45f9-9a31-96ca493810b5"],
+	"footprints": [
+		{
+			"statementType": "add_column",
+			"statementTarget": ["column", "public", "moderations", "reason"],
+			"writes": [
+				"s|col|public.moderations.reason",
+				"n|col|public.moderations.reason",
+				"e|col|public.moderations.reason"
+			],
+			"reads": ["n|tbl|public.moderations", "n|sch|public"]
+		}
+	],
+	"deltas": [
+		{
+			"op": "create",
+			"row": {
+				"schema": "public",
+				"table": "moderations",
+				"name": "reason",
+				"type": "varchar(255)",
+				"typeSchema": null,
+				"notNull": true,
+				"dimensions": 0,
+				"default": null,
+				"generated": null,
+				"identity": null,
+				"entityType": "columns"
+			}
+		}
+	]
+}

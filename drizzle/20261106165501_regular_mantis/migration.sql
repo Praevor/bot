@@ -1,0 +1,1 @@
+ALTER TABLE "moderations" ADD COLUMN "reason" varchar(255) NOT NULL;

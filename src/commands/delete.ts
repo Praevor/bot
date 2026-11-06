@@ -2,7 +2,7 @@ import { ApplicationCommandOptionType, ChatInputCommandInteraction } from 'disco
 import { Command } from './index.js';
 import { getRank } from '../util/getRank.js';
 import { db } from '../db/index.js';
-import { serversTable } from '../db/schema.js';
+import { moderationsTable, serversTable } from '../db/schema.js';
 import { eq } from 'drizzle-orm';
 import { sendLog } from '../util/sendLog.js';
 
@@ -39,7 +39,7 @@ export default {
 					{
 						title: 'Deletion',
 						description:
-							'Run this command with the text option containing DELETE. **This will delete all information about this server in our databases.**',
+							'Run this command with the text option containing DELETE. **This will delete all information about this server (including all logs) in our databases.**',
 					},
 				],
 			});
@@ -66,6 +66,10 @@ export default {
 		await interaction.editReply('Deleting server...');
 
 		await db.delete(serversTable).where(eq(serversTable.id, interaction.guildId ?? 'a'));
+
+		await interaction.editReply('Deleting logs...');
+
+		await db.delete(moderationsTable).where(eq(moderationsTable.serverId, interaction.guildId ?? 'a'));
 
 		await interaction.editReply('Server deleted');
 	},

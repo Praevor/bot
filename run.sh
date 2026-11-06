@@ -8,4 +8,4 @@ echo "Migrating db..."
 ./node_modules/.bin/drizzle-kit migrate
 
 echo "Starting..."
-exec node dist
+exec node dist/src/index.js

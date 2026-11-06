@@ -2,7 +2,6 @@ import { ApplicationCommandOptionType, ChatInputCommandInteraction } from 'disco
 import { Command } from '../index.js';
 import { newLog } from '../../util/newLog.js';
 import { getRank } from '../../util/getRank.js';
-import { randomFill } from 'crypto';
 
 export default {
 	data: {

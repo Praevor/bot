@@ -5,6 +5,7 @@ import { Result } from '../types/Result.js';
 import { callERLCapi } from './callERLCapi.js';
 import { getServer } from './getServer.js';
 import { getServerKey } from './getServerKey.js';
+import { sendLog } from './sendLog.js';
 
 export async function newLog(
 	serverId: string,
@@ -48,6 +49,11 @@ export async function newLog(
 		moderatorId,
 		reason,
 	});
+	await sendLog(
+		'New moderation',
+		`Roblox user: [${robloxUsername}](https://roblox.com/users/${robloxId}) \nPunishment: ${punishmentType.toLowerCase()} \nReason: ${reason} \nModerator: <@${moderatorId}>`,
+		serverId,
+	);
 
 	const params = new URLSearchParams();
 	params.append('Players', 'true');

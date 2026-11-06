@@ -1,0 +1,32 @@
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      APPLICATION_ID:
+      DISCORD_TOKEN:
+      DATABASE_URL: postgresql://${DB_USER}:${DB_PASSWORD}@db:5432/praevor
+      SECRET:
+      AUTH:
+      APP_ID:
+
+  db:
+    image: postgres:18
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: praevor
+    volumes:
+      - praevor_db:/var/lib/postgresql
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U $${POSTGRES_USER} -d praevor']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  praevor_db:

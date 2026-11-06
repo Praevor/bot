@@ -46,6 +46,7 @@ export async function newLog(
 		robloxId,
 		punishmentType,
 		moderatorId,
+		reason,
 	});
 
 	const params = new URLSearchParams();

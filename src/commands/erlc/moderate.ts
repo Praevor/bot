@@ -21,7 +21,7 @@ export default {
 				required: true,
 			},
 			{
-				name: 'punisment',
+				name: 'punishment',
 				description: 'The punishment type',
 				type: ApplicationCommandOptionType.String,
 				required: true,

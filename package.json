@@ -8,6 +8,7 @@
 		"build": "tsc",
 		"lint": "prettier --check . && eslint --ext .ts --format=pretty src",
 		"deploy": "node --env-file=.env dist/src/util/deploy.js",
+		"deploy:noenv": "node dist/src/util/deploy.js",
 		"format": "prettier --write . && eslint --ext .ts --fix --format=pretty src",
 		"start": "tsc && node --env-file=.env dist/src/index.js",
 		"start:nobuild": "node --env-file=.env dist/src/index.js",

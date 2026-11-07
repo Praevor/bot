@@ -87,7 +87,7 @@ export async function newLog(
 		}
 		case 'KICK': {
 			await new Promise<void>((resolve) => setTimeout(resolve, 5000));
-			const kickRes = await callERLCapi('/v2/server/command', key.data, 'POST', { command: `:ban ${robloxId}` });
+			const kickRes = await callERLCapi('/v2/server/command', key.data, 'POST', { command: `:kick ${robloxUsername}` });
 			if (!kickRes.ok) return { ok: false, error: `Logged but error while kicking: ${kickRes.error}` };
 			break;
 		}

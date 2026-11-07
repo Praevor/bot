@@ -77,16 +77,21 @@ export async function newLog(
 		command: `:pm ${robloxUsername} You have received a ${punishmentType.toLowerCase()} for the reason ${reason}`,
 	});
 	if (!res.ok) return { ok: false, error: `Logged but got error while PMing: ${res.error}` };
-	if (punishmentType === 'BAN') {
-		await new Promise<void>((resolve) => setTimeout(resolve, 5000)); // wait 5 seconds before banning
-		const banRes = await callERLCapi('/v2/server/command', key.data, 'POST', { command: `:ban ${robloxId}` });
-		if (!banRes.ok) return { ok: false, error: `Logged but got error while banning: ${banRes.error}` };
-		return { ok: true, data: 'Player banned' };
+
+	switch (punishmentType) {
+		case 'BAN': {
+			await new Promise<void>((resolve) => setTimeout(resolve, 5000));
+			const banRes = await callERLCapi('/v2/server/command', key.data, 'POST', { command: `:ban ${robloxId}` });
+			if (!banRes.ok) return { ok: false, error: `Logged but error while banning: ${banRes.error}` };
+			break;
+		}
+		case 'KICK': {
+			await new Promise<void>((resolve) => setTimeout(resolve, 5000));
+			const kickRes = await callERLCapi('/v2/server/command', key.data, 'POST', { command: `:ban ${robloxId}` });
+			if (!kickRes.ok) return { ok: false, error: `Logged but error while kicking: ${kickRes.error}` };
+			break;
+		}
 	}
-	if (punishmentType !== 'KICK') return { ok: true, data: 'Sucessfuly logged' };
 
-	await new Promise<void>((resolve) => setTimeout(resolve, 5000)); // wait 5 seconds before kicking
-
-	await callERLCapi('/v2/server/command', key.data, 'POST', { command: `:kick ${robloxUsername}` });
 	return { ok: true, data: 'Successfuly logged' };
 }

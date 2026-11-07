@@ -55,7 +55,6 @@ export default {
 				},
 			],
 			footer: { text: 'ERLC server status' },
-			author: { name: 'Praevor', icon_url: 'https://avatars.githubusercontent.com/u/350970298' },
 		};
 
 		await interaction.reply({ embeds: [embed] });

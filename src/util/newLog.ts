@@ -59,7 +59,7 @@ export async function newLog(
 	params.append('Players', 'true');
 
 	const erlcPlayers = await callERLCapi('/v2/server', key.data, 'GET', undefined, params);
-	if (!erlcPlayers.ok) return { ok: false, error: erlcPlayers.error };
+	if (!erlcPlayers.ok) return { ok: false, error: `Error while getting players: ${erlcPlayers.error}` };
 	const players = erlcPlayers.data.body.Players as Player[];
 
 	const player = players.find((p) => p.Player.split(':')[0] === robloxUsername);

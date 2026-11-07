@@ -46,7 +46,7 @@ export default {
 
 		const embed: APIEmbed = {
 			title: `${username}'s moderations`,
-			description: `(Roblox profile)[https://roblox.com/users/${moderations[0].id}]`,
+			description: `[Roblox profile](https://roblox.com/users/${moderations[0].id})`,
 			fields: moderations.map((m) => ({
 				name: `#${m.id} ${m.punishmentType.toLowerCase()}`,
 				value: `Reason: ${m.reason} \nModerator: <@${m.moderatorId}>`,

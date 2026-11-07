@@ -1,10 +1,17 @@
 import process from 'node:process';
 import { URL } from 'node:url';
-import { Client, GatewayIntentBits } from 'discord.js';
+import { ActivityType, Client, GatewayIntentBits } from 'discord.js';
 import { loadEvents } from './util/loaders.js';
 
 // Initialize the client
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
+
+const allIntents = Object.values(GatewayIntentBits).filter((value): value is GatewayIntentBits =>
+	Number.isInteger(value),
+);
+const client = new Client({
+	intents: allIntents,
+	presence: { status: 'online', activities: [{ name: 'ERLC servers', type: ActivityType.Watching }] },
+});
 
 // Load the events and commands
 const events = await loadEvents(new URL('events/', import.meta.url));

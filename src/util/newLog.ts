@@ -33,7 +33,7 @@ export async function newLog(
 
 	const robloxJson = (await robloxRes.json()) as any;
 
-	if (robloxJson.data.lenght === 0) return { ok: false, error: 'Roblox user not found' };
+	if (!robloxJson.data[0]) return { ok: false, error: 'Roblox user not found' };
 
 	const robloxId = robloxJson.data[0].id as string;
 

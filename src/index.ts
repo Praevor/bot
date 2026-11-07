@@ -4,8 +4,12 @@ import { ActivityType, Client, GatewayIntentBits } from 'discord.js';
 import { loadEvents } from './util/loaders.js';
 
 // Initialize the client
+
+const allIntents = Object.values(GatewayIntentBits).filter((value): value is GatewayIntentBits =>
+	Number.isInteger(value),
+);
 const client = new Client({
-	intents: [GatewayIntentBits.Guilds],
+	intents: allIntents,
 	presence: { status: 'online', activities: [{ name: 'ERLC servers', type: ActivityType.Watching }] },
 });
 

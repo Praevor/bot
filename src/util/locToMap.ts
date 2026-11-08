@@ -2,11 +2,14 @@ import sharp from 'sharp';
 
 const MAP_URL = 'https://api.erlc.gg/maps/fall_postals.png';
 const MAP_SIZE = 5355;
+let mapCache: Buffer | undefined;
 
 async function getMap(): Promise<Buffer> {
+	if (mapCache) return mapCache;
 	const res = await fetch(MAP_URL);
 	if (!res.ok) throw new Error(`Failed to fetch map: ${res.status}`);
-	return Buffer.from(await res.arrayBuffer());
+	mapCache = Buffer.from(await res.arrayBuffer());
+	return mapCache;
 }
 
 export async function locToMap(x: number, z: number): Promise<Buffer> {

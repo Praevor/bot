@@ -54,12 +54,6 @@ export default {
 			return;
 		}
 
-		await interaction.editReply('Making map... \n-# This might take a few seconds');
-
-		const locMap = await locToMap(player.Location.LocationX, player.Location.LocationZ);
-
-		const file = new AttachmentBuilder(locMap, { name: 'loc.png' });
-
 		const [name, id] = player.Player.split(':');
 		const vehicle = vehicles.find((v) => v.Owner === name);
 
@@ -78,6 +72,18 @@ export default {
 			].join('\n'),
 		};
 
-		await interaction.editReply({ embeds: [embed], files: [file] });
+		await interaction.editReply({ embeds: [embed], content: 'Making map...' });
+
+		const locMap = await locToMap([
+			{
+				id: Number(player.Player.split(':')[1]),
+				team: player.Team,
+				location: { x: player.Location.LocationX, z: player.Location.LocationZ },
+			},
+		]);
+
+		const file = new AttachmentBuilder(locMap, { name: 'loc.png' });
+
+		await interaction.editReply({ embeds: [embed], content: '', files: [file] });
 	},
 } satisfies Command;

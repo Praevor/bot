@@ -1,7 +1,7 @@
-import sharp from 'sharp';
+import { Player } from '@erlcjs/core';
+import { drawMap } from '@erlcjs/map';
 
 const MAP_URL = 'https://api.erlc.gg/maps/fall_postals.png';
-const MAP_SIZE = 5355;
 let mapCache: Buffer | undefined;
 
 async function getMap(): Promise<Buffer> {
@@ -12,18 +12,23 @@ async function getMap(): Promise<Buffer> {
 	return mapCache;
 }
 
-export async function locToMap(x: number, z: number): Promise<Buffer> {
-	const OUT = 1600;
-	const k = OUT / MAP_SIZE;
+interface PlayerType {
+	id: number;
+	team: string;
+	location: {
+		x: number;
+		z: number;
+	};
+}
 
-	const px = x * k;
-	const py = z * k;
+export async function locToMap(players: PlayerType[]): Promise<Buffer> {
+	const p = players as unknown as Player[];
 
-	const svg = `<svg width="${OUT}" height="${OUT}" xmlns="http://www.w3.org/2000/svg"><circle cx="${px}" cy="${py}" r="6" fill="red" stroke="white" stroke-width="2"/></svg>`;
+	const map = await drawMap({
+		players: p,
+		map: await getMap(),
+		showModCalls: false,
+	});
 
-	return sharp(await getMap())
-		.resize(OUT, OUT)
-		.composite([{ input: Buffer.from(svg), top: 0, left: 0 }])
-		.png()
-		.toBuffer();
+	return map;
 }

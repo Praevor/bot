@@ -1,8 +1,9 @@
-import { APIEmbed } from 'discord.js';
+import { APIEmbed, AttachmentBuilder } from 'discord.js';
 import { callERLCapi } from '../../util/callERLCapi.js';
 import { getServerKey } from '../../util/getServerKey.js';
 import { Command } from '../index.js';
 import { Player } from '../../types/Player.js';
+import { locToMap } from '../../util/locToMap.js';
 
 export default {
 	data: {
@@ -45,6 +46,21 @@ export default {
 				.join('\n'),
 		};
 
-		await interaction.editReply({ embeds: [embed] });
+		await interaction.editReply({ embeds: [embed], content: 'Map of players is being made...' });
+
+		const map = await locToMap(
+			players.map((p) => ({
+				id: Number(p.Player.split(':')[1]),
+				team: p.Team,
+				location: {
+					x: p.Location.LocationX,
+					z: p.Location.LocationZ,
+				},
+			})),
+		);
+
+		const file = new AttachmentBuilder(map, { name: 'players.png' });
+
+		await interaction.editReply({ embeds: [embed], files: [file], content: '' });
 	},
 } satisfies Command;

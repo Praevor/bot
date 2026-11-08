@@ -30,8 +30,9 @@ export default {
 			await interaction.reply({ content: rank.error, flags: 'Ephemeral' });
 			return;
 		}
-		if (rank.data !== 'ADMIN' && rank.data !== 'MANAGER') {
+		if (rank.data !== 'ADMIN') {
 			await interaction.reply({ content: "You don't have perms to use this", flags: 'Ephemeral' });
+			return;
 		}
 
 		const res = await addKeyToDb(apiKey, interaction.guildId);

@@ -40,7 +40,7 @@ export default {
 			description: players
 				.map(
 					(p) =>
-						`${p.Player.split(':')[0]} \n[Roblox profile](https://roblox.com/users/${p.Player.split(':')[1]}) \n${p.Team} ${p.Callsign ? `(${p.Callsign})` : ''} \nWanted Stars ${p.WantedStars}`,
+						`**${p.Player.split(':')[0]}** \n[Roblox profile](https://roblox.com/users/${p.Player.split(':')[1]}) \n${p.Team} ${p.Callsign ? `(${p.Callsign})` : ''} \nWanted Stars ${p.WantedStars}`,
 				)
 				.join('\n'),
 		};

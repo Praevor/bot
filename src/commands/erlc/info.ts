@@ -9,6 +9,7 @@ export default {
 		description: 'Get in game info',
 	},
 	async execute(interaction) {
+		await interaction.deferReply();
 		if (!interaction.guildId) {
 			await interaction.reply({ content: 'You can only use this in a server', flags: 'Ephemeral' });
 			return;
@@ -17,7 +18,7 @@ export default {
 		const key = await getServerKey(interaction.guildId);
 
 		if (!key.ok) {
-			await interaction.reply({ content: key.error, flags: 'Ephemeral' });
+			await interaction.editReply({ content: key.error });
 			return;
 		}
 
@@ -29,7 +30,7 @@ export default {
 		const res = await callERLCapi('/v2/server', key.data, 'GET', undefined, params);
 
 		if (!res.ok) {
-			await interaction.reply({ content: res.error, flags: 'Ephemeral' });
+			await interaction.editReply({ content: res.error });
 			return;
 		}
 
@@ -57,6 +58,6 @@ export default {
 			footer: { text: 'ERLC server status' },
 		};
 
-		await interaction.reply({ embeds: [embed] });
+		await interaction.editReply({ embeds: [embed] });
 	},
 } satisfies Command;

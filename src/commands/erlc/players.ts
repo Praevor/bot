@@ -10,6 +10,7 @@ export default {
 		description: 'Get all ERLC players',
 	},
 	async execute(interaction) {
+		await interaction.deferReply();
 		if (!interaction.guildId) {
 			await interaction.reply({ content: 'You can only use this in a server' });
 			return;
@@ -18,7 +19,7 @@ export default {
 		const apiKey = await getServerKey(interaction.guildId);
 
 		if (!apiKey.ok) {
-			await interaction.reply({ content: apiKey.error, flags: 'Ephemeral' });
+			await interaction.editReply({ content: apiKey.error });
 			return;
 		}
 
@@ -28,23 +29,22 @@ export default {
 		const res = await callERLCapi('/v2/server', apiKey.data, 'GET', undefined, params);
 
 		if (!res.ok) {
-			await interaction.reply({ content: res.error, flags: 'Ephemeral' });
+			await interaction.editReply({ content: res.error });
 			return;
 		}
 
-		const players = res.data.body.Players as Player[];
+		const players = (res.data.body as any).Players as Player[];
 
 		const embed: APIEmbed = {
 			title: 'ERLC Players',
-			fields: players.map((p) => {
-				const [username, id] = p.Player.split(':');
-				return {
-					name: username,
-					value: `[Roblox profile](https://roblox.com/users/${id}) \n${p.Team} ${p.Callsign ? `(${p.Callsign})` : ''} \nWanted Stars ${p.WantedStars}`,
-				};
-			}),
+			description: players
+				.map(
+					(p) =>
+						`**${p.Player.split(':')[0]}** \n[Roblox profile](https://roblox.com/users/${p.Player.split(':')[1]}) \n${p.Team} ${p.Callsign ? `(${p.Callsign})` : ''} \nWanted Stars ${p.WantedStars}`,
+				)
+				.join('\n'),
 		};
 
-		await interaction.reply({ embeds: [embed] });
+		await interaction.editReply({ embeds: [embed] });
 	},
 } satisfies Command;

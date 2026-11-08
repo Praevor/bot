@@ -21,7 +21,7 @@ export default defineConfig(
 			'no-console': 'off', // bots usually log to console
 			eqeqeq: ['error', 'always'],
 			'prefer-const': 'error',
-			'@typescript-eslint/no-explicit-any': 'warn',
+			'@typescript-eslint/no-explicit-any': 'off',
 			'no-case-declarations': 'warn',
 		},
 	},

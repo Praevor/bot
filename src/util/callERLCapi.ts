@@ -61,5 +61,5 @@ export async function callERLCapi(
 		}
 	}
 
-	return { ok: true, data: { status: res.status, body: json } };
+	return { ok: true, data: { status: res.status.toString(), body: json } };
 }

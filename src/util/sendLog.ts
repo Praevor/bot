@@ -10,11 +10,15 @@ export async function sendLog(title: string, description: string, guildId: strin
 
 	const embed = new EmbedBuilder().setTitle(title).setDescription(description);
 
-	await rest.post(Routes.channelMessages(server.logChannelId), {
-		body: {
-			embeds: [embed.toJSON()],
-		},
-	});
+	try {
+		await rest.post(Routes.channelMessages(server.logChannelId), {
+			body: {
+				embeds: [embed.toJSON()],
+			},
+		});
+	} catch {
+		return { ok: false, error: "Error while sending log, check the bot's perms in the logs channel" };
+	}
 
 	return { ok: true, data: undefined };
 }

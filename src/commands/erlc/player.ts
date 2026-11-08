@@ -20,7 +20,7 @@ export default {
 		],
 	},
 	async execute(interaction) {
-		await interaction.deferReply({ flags: 'Ephemeral' });
+		await interaction.deferReply();
 		const username = (interaction as ChatInputCommandInteraction).options.getString('username', true);
 
 		if (!interaction.guildId) {
@@ -45,8 +45,8 @@ export default {
 			return;
 		}
 
-		const players = res.data.body.Players as Player[];
-		const vehicles = res.data.body.Vehicles as Vehicle[];
+		const players = (res.data.body as any).Players as Player[];
+		const vehicles = (res.data.body as any).Vehicles as Vehicle[];
 
 		const player = players.find((p) => p.Player.split(':')[0] === username);
 		if (!player) {

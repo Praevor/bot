@@ -18,29 +18,31 @@ export default {
 		],
 	},
 	async execute(interaction) {
+		await interaction.deferReply({ flags: 'Ephemeral' });
 		const apiKey = (interaction as ChatInputCommandInteraction).options.getString('key', true);
 
 		if (!interaction.guildId) {
-			await interaction.reply({ content: 'This can be only used in servers', flags: 'Ephemeral' });
+			await interaction.editReply({ content: 'This can be only used in servers' });
 			return;
 		}
 
 		const rank = await getRank(interaction);
 		if (!rank.ok) {
-			await interaction.reply({ content: rank.error, flags: 'Ephemeral' });
+			await interaction.editReply({ content: rank.error });
 			return;
 		}
-		if (rank.data !== 'ADMIN' && rank.data !== 'MANAGER') {
-			await interaction.reply({ content: "You don't have perms to use this", flags: 'Ephemeral' });
+		if (rank.data !== 'ADMIN') {
+			await interaction.editReply({ content: "You don't have perms to use this" });
+			return;
 		}
 
 		const res = await addKeyToDb(apiKey, interaction.guildId);
 
 		if (!res.ok) {
-			await interaction.reply({ content: res.error, flags: 'Ephemeral' });
+			await interaction.editReply({ content: res.error });
 			return;
 		}
 		await sendLog('Set API key', `The API key has been set by <@${interaction.member?.user.id}>`, interaction.guildId);
-		await interaction.reply({ content: res.data, flags: 'Ephemeral' });
+		await interaction.editReply({ content: res.data });
 	},
 } satisfies Command;

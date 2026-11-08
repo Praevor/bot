@@ -5,7 +5,6 @@ import { moderationsTable } from '../../db/schema.js';
 import { eq } from 'drizzle-orm';
 import { sendLog } from '../../util/sendLog.js';
 import { getRank } from '../../util/getRank.js';
-import { randomFill } from 'crypto';
 
 export default {
 	data: {

@@ -46,11 +46,9 @@ export default {
 
 		const embed: APIEmbed = {
 			title: `${username}'s moderations`,
-			description: `[Roblox profile](https://roblox.com/users/${moderations[0].robloxId})`,
-			fields: moderations.map((m) => ({
-				name: `#${m.id} ${m.punishmentType.toLowerCase()}`,
-				value: `Reason: ${m.reason} \nModerator: <@${m.moderatorId}>`,
-			})),
+			description: moderations
+				.map((m) => `#${m.id} ${m.punishmentType.toLowerCase()} \nReason: ${m.reason} \nModerator: <@${m.moderatorId}>`)
+				.join('\n'),
 		};
 
 		await interaction.editReply({ embeds: [embed] });

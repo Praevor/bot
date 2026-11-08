@@ -47,7 +47,10 @@ export default {
 		const embed: APIEmbed = {
 			title: `${username}'s moderations`,
 			description: moderations
-				.map((m) => `#${m.id} ${m.punishmentType.toLowerCase()} \nReason: ${m.reason} \nModerator: <@${m.moderatorId}>`)
+				.map(
+					(m) =>
+						`**#${m.id} ${m.punishmentType.toLowerCase()}** \nReason: ${m.reason} \nModerator: <@${m.moderatorId}>`,
+				)
 				.join('\n'),
 		};
 

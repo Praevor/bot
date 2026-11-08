@@ -19,6 +19,7 @@ export default {
 				description: 'The reason for the punishment',
 				type: ApplicationCommandOptionType.String,
 				required: true,
+				max_length: 255,
 			},
 			{
 				name: 'punishment',

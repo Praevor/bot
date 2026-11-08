@@ -52,8 +52,8 @@ importers:
         specifier: ^0.5.4
         version: 0.5.4(@typescript-eslint/types@8.72.1)(@typescript-eslint/utils@8.72.1(eslint@9.39.5(supports-color@10.2.2))(supports-color@10.2.2)(typescript@5.9.3))(eslint@9.39.5(supports-color@10.2.2))(supports-color@10.2.2)(svelte@3.59.2)(ts-declaration-location@1.0.7(typescript@5.9.3))(typescript@5.9.3)
       eslint-formatter-compact:
-        specifier: ^8.40.0
-        version: 8.40.0
+        specifier: ^9.0.1
+        version: 9.0.1
       eslint-formatter-pretty:
         specifier: ^7.0.0
         version: 7.1.0
@@ -1713,9 +1713,9 @@ packages:
     peerDependencies:
       eslint: '>=7.0.0'
 
-  eslint-formatter-compact@8.40.0:
-    resolution: {integrity: sha512-cwGUs113TgmTQXecx5kfRjB7m0y2wkDLSadPTE2pK6M/wO4N8PjmUaoWOFNCP9MHgsiZwgqd5bZFnDCnszC56Q==}
-    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+  eslint-formatter-compact@9.0.1:
+    resolution: {integrity: sha512-mBAti2tb403dQGMyilQTYHU80stem3N7jdtKW+tmn5gj3JNF7ki0rgCZtJFw4iMayTH862FTUIqCdp70ug0S0Q==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   eslint-formatter-pretty@7.1.0:
     resolution: {integrity: sha512-iyPrgpwKC3MMM75Wxn0VouD89HolpG+BL95NOxgwOWO0R+Omapo7gFX2xcGVsUDS7KiXLtDuynLbNbOARSE7YA==}
@@ -5070,7 +5070,7 @@ snapshots:
     dependencies:
       eslint: 9.39.5(supports-color@10.2.2)
 
-  eslint-formatter-compact@8.40.0: {}
+  eslint-formatter-compact@9.0.1: {}
 
   eslint-formatter-pretty@7.1.0:
     dependencies:

@@ -56,7 +56,13 @@ export default {
 
 		await interaction.editReply('Making map... \n-# This might take a few seconds');
 
-		const locMap = await locToMap(player.Location.LocationX, player.Location.LocationZ);
+		const locMap = await locToMap([
+			{
+				id: Number(player.Player.split(':')[1]),
+				team: player.Team,
+				location: { x: player.Location.LocationX, z: player.Location.LocationZ },
+			},
+		]);
 
 		const file = new AttachmentBuilder(locMap, { name: 'loc.png' });
 

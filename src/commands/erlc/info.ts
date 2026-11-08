@@ -34,7 +34,7 @@ export default {
 			return;
 		}
 
-		const server = res.data.body;
+		const server = res.data.body as any;
 
 		const embed: APIEmbed = {
 			title: server.Name,

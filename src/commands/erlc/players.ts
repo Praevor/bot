@@ -33,7 +33,7 @@ export default {
 			return;
 		}
 
-		const players = res.data.body.Players as Player[];
+		const players = (res.data.body as any).Players as Player[];
 
 		const embed: APIEmbed = {
 			title: 'ERLC Players',

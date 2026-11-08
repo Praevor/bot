@@ -30,7 +30,7 @@
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",
 		"@sapphire/ts-config": "^5.0.1",
-		"@types/node": "^22.18.8",
+		"@types/node": "^26.6.6",
 		"@types/pg": "^8.23.1",
 		"drizzle-kit": "1.0.0-rc.5",
 		"eslint": "^9.37.0",

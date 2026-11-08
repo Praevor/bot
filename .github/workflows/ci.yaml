@@ -29,7 +29,6 @@ jobs:
       - name: set up things
         run: |
           pnpm i --frozen-lockfile
-          pnpm sync
 
       - name: check formatting
         run: pnpm format:check

@@ -1,0 +1,37 @@
+name: Format
+
+permissions:
+  contents: write
+  actions: read
+
+on:
+  workflow_dispatch:
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
+          persist-credentials: true
+
+      - name: set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      - name: set up node
+        uses: actions/setup-node@v4
+
+      - name: install deps
+        run: pnpm i
+
+      - name: format code
+        run: pnpm format
+
+      - name: push to repo
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: 'format: run format command'

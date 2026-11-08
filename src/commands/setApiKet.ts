@@ -18,7 +18,7 @@ export default {
 		],
 	},
 	async execute(interaction) {
-		await interaction.deferReply();
+		await interaction.deferReply({ flags: 'Ephemeral' });
 		const apiKey = (interaction as ChatInputCommandInteraction).options.getString('key', true);
 
 		if (!interaction.guildId) {

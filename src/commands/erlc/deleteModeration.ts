@@ -4,6 +4,8 @@ import { db } from '../../db/index.js';
 import { moderationsTable } from '../../db/schema.js';
 import { eq } from 'drizzle-orm';
 import { sendLog } from '../../util/sendLog.js';
+import { getRank } from '../../util/getRank.js';
+import { randomFill } from 'crypto';
 
 export default {
 	data: {
@@ -25,6 +27,16 @@ export default {
 
 		if (!interaction.guildId) {
 			await interaction.editReply('You can only use this in a server');
+			return;
+		}
+
+		const rank = await getRank(interaction);
+		if (!rank.ok) {
+			await interaction.editReply(rank.error);
+			return;
+		}
+		if (rank.data !== 'ADMIN' && rank.data !== 'MANAGER') {
+			await interaction.editReply("You don't have permissions to use this");
 			return;
 		}
 

@@ -8,14 +8,13 @@ export default {
 		description: 'Set up or edit the server',
 	},
 	async execute(interaction) {
-		await interaction.deferReply({ flags: 'Ephemeral' });
 		const rank = await getRank(interaction);
 		if (!rank.ok) {
-			await interaction.editReply({ content: rank.error });
+			await interaction.reply({ content: rank.error, flags: 'Ephemeral' });
 			return;
 		}
 		if (rank.data !== 'ADMIN') {
-			await interaction.editReply({ content: "You don't have permissions for this" });
+			await interaction.reply({ content: "You don't have permissions for this", flags: 'Ephemeral' });
 			return;
 		}
 

@@ -11,8 +11,8 @@ importers:
         specifier: ^2.3.0
         version: 2.7.0
       '@erlcjs/core':
-        specifier: 2.0.0-beta.2
-        version: 2.0.0-beta.2(supports-color@10.2.2)
+        specifier: 2.0.0
+        version: 2.0.0(supports-color@10.2.2)
       '@erlcjs/map':
         specifier: 2.0.0-beta.2
         version: 2.0.0-beta.2(supports-color@10.2.2)
@@ -271,9 +271,9 @@ packages:
     resolution:
       { integrity: sha512-uTII7OYF+/Mes/MrcIOYp5yOtSMLBWSIoLPpcgwipoiKbli6k322tcoFsxoIIxPDqW01SQGAgko4EzZi2BNv2w== }
 
-  '@erlcjs/core@2.0.0-beta.2':
+  '@erlcjs/core@2.0.0':
     resolution:
-      { integrity: sha512-caSzv58+CKatA9KSoaWeQrawgexHd3OAg5SIX1RAIr1/XIyJVjvYjhp4lWa3o7MtSB5N3d9gXaUeJDJAiZ9UbQ== }
+      { integrity: sha512-+BRNZjCnrcRFHB5jlSMxGz/CnZCsypESxNoyibMJcWxnOW181OBHUaem8PitAlhWI0fpIoF4gzlshi6eB2bTNw== }
     engines: { node: '>=20' }
     hasBin: true
 
@@ -1358,11 +1358,6 @@ packages:
   ajv-formats@3.0.1:
     resolution:
       { integrity: sha512-8iUql50EUR+uUcdRQ3HDqa6EVyo3docL8g5WJ3FNcWmu62IbkGUue/pEyLBW8VGKKucTPgqeks4fIU1DA4yowQ== }
-    peerDependencies:
-      ajv: ^8.0.0
-    peerDependenciesMeta:
-      ajv:
-        optional: true
 
   ajv@6.15.0:
     resolution:
@@ -4737,7 +4732,7 @@ snapshots:
       tslib: 2.9.1
     optional: true
 
-  '@erlcjs/core@2.0.0-beta.2(supports-color@10.2.2)':
+  '@erlcjs/core@2.0.0(supports-color@10.2.2)':
     dependencies:
       '@modelcontextprotocol/sdk': 1.32.2(supports-color@10.2.2)(zod@4.6.7)
       zod: 4.6.7
@@ -4747,7 +4742,7 @@ snapshots:
 
   '@erlcjs/map@2.0.0-beta.2(supports-color@10.2.2)':
     dependencies:
-      '@erlcjs/core': 2.0.0-beta.2(supports-color@10.2.2)
+      '@erlcjs/core': 2.0.0(supports-color@10.2.2)
       sharp: 0.34.5
     transitivePeerDependencies:
       - '@cfworker/json-schema'

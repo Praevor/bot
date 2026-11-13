@@ -24,6 +24,6 @@ export default {
 
 			void push();
 			setInterval(() => void push(), Number(interval));
-		}
+		} else if (process.env.DEBUG === 'true') console.log('No PUSH_URL and/or PATH_INTERVAL in .env');
 	},
 } satisfies Event<Events.ClientReady>;

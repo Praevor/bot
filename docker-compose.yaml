@@ -12,6 +12,9 @@ services:
       SECRET:
       AUTH:
       APP_ID:
+      PUSH_URL:
+      PUSH_INTERVAL:
+      DEBUG:
 
   db:
     image: postgres:18

@@ -12,12 +12,14 @@ export default {
 
 		if (pushUrl && interval) {
 			const push = async () => {
+				if (process.env.DEBUG === 'true') console.log('Sending push');
 				try {
 					const res = await fetch(pushUrl);
 					if (!res.ok) console.error(`Error while sending request to push url: ${res.status}`);
 				} catch (error) {
 					console.error('Error while sending request to push url:', error);
 				}
+				if (process.env.DEBUG === 'true') console.log('Push sent');
 			};
 
 			void push();

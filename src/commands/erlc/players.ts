@@ -36,6 +36,11 @@ export default {
 
 		const players = (res.data.body as any).Players as Player[];
 
+		if (players.length === 0) {
+			await interaction.editReply('No players in game');
+			return;
+		}
+
 		const embed: APIEmbed = {
 			title: 'ERLC Players',
 			description: players

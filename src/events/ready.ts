@@ -11,10 +11,17 @@ export default {
 		const interval = process.env.PUSH_INTERVAL;
 
 		if (pushUrl && interval) {
-			setInterval(async () => {
-				const res = await fetch(pushUrl);
-				if (!res.ok) throw new Error(`Error while seing request to push url: ${res.status}`);
-			}, Number(interval));
+			const push = async () => {
+				try {
+					const res = await fetch(pushUrl);
+					if (!res.ok) console.error(`Error while sending request to push url: ${res.status}`);
+				} catch (error) {
+					console.error('Error while sending request to push url:', error);
+				}
+			};
+
+			void push();
+			setInterval(() => void push(), Number(interval));
 		}
 	},
 } satisfies Event<Events.ClientReady>;

@@ -14,8 +14,8 @@ importers:
         specifier: 2.0.0
         version: 2.0.0(supports-color@10.2.2)
       '@erlcjs/map':
-        specifier: 2.0.0-beta.2
-        version: 2.0.0-beta.2(supports-color@10.2.2)
+        specifier: 2.0.0
+        version: 2.0.0(supports-color@10.2.2)
       cryptr:
         specifier: ^6.4.0
         version: 6.4.0
@@ -265,9 +265,9 @@ packages:
     engines: { node: '>=20' }
     hasBin: true
 
-  '@erlcjs/map@2.0.0-beta.2':
+  '@erlcjs/map@2.0.0':
     resolution:
-      { integrity: sha512-vqRR5WPivesgusYs2NaWgj6lcoW5rsoFsOL5xyTBMVHMzDvnBo7Q+KKWvo5OOROw2MWLyXJJX4ZGXhF8guC69Q== }
+      { integrity: sha512-cQ/wNeF9l3HHoANu/ykPKPWMdr5Wtspsxh4b4bXA+kWc9dOpUWkLom0sHrga/uQ30RzXNFVWyqn8T5/ga3i9bQ== }
 
   '@es-joy/jsdoccomment@0.91.0':
     resolution:
@@ -4720,7 +4720,7 @@ snapshots:
       - '@cfworker/json-schema'
       - supports-color
 
-  '@erlcjs/map@2.0.0-beta.2(supports-color@10.2.2)':
+  '@erlcjs/map@2.0.0(supports-color@10.2.2)':
     dependencies:
       '@erlcjs/core': 2.0.0(supports-color@10.2.2)
       sharp: 0.34.5
@@ -5040,7 +5040,7 @@ snapshots:
     dependencies:
       '@hono/node-server': 2.1.6(hono@4.13.17)
       ajv: 8.20.0
-      ajv-formats: 3.0.1
+      ajv-formats: 3.0.1(ajv@8.20.0)
       content-type: 1.0.5
       cors: 2.8.6
       cross-spawn: 7.0.6
@@ -5516,8 +5516,8 @@ snapshots:
 
   acorn@8.19.0: {}
 
-  ajv-formats@3.0.1:
-    dependencies:
+  ajv-formats@3.0.1(ajv@8.20.0):
+    optionalDependencies:
       ajv: 8.20.0
 
   ajv@6.15.0:

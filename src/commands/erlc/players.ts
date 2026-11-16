@@ -13,7 +13,7 @@ export default {
 	async execute(interaction) {
 		await interaction.deferReply();
 		if (!interaction.guildId) {
-			await interaction.reply({ content: 'You can only use this in a server' });
+			await interaction.editReply({ content: 'You can only use this in a server' });
 			return;
 		}
 

@@ -9,6 +9,6 @@ export interface Player {
 		StreetName: string;
 		BuildingNumber: string;
 	};
-	Permissions: string;
+	Permission: string;
 	WantedStars: number;
 }

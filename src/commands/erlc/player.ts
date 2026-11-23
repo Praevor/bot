@@ -64,7 +64,7 @@ export default {
 				'**Team**',
 				`${player.Team} ${player.Callsign ? `(${player.Callsign})` : ''}`,
 				'**Permissions**',
-				player.Permissions,
+				player.Permission,
 				'**Wanted stars**',
 				player.WantedStars,
 				'**Vehicle**',

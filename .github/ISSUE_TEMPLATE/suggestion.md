@@ -1,11 +1,10 @@
 ---
 name: Suggestion
 about: Request a feature
-title: "[SUGGESTION]"
+title: '[SUGGESTION]'
 labels: Suggestion
 assignees: thenamelessdev
 type: Feature
-
 ---
 
 **Describe the feature**

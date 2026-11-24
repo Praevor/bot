@@ -70,7 +70,7 @@ export async function newLog(
 			return { ok: true, data: 'Player not found in game but banned and logged' };
 		}
 
-		return { ok: true, data: 'Logged but player not found in game' };
+		return { ok: true, data: 'Logged and banned but player not found in game' };
 	}
 
 	const res = await callERLCapi('/v2/server/command', key.data, 'POST', {

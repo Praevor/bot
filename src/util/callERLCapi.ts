@@ -40,7 +40,7 @@ export async function callERLCapi(
 		if (!json.code) return { ok: false, error: 'ERLC api returned an error without a code' };
 		json.code = String(json.code);
 		if (json.code === '3002') return { ok: false, error: 'Server offline' };
-		if (json.code === '2002')
+		if (res.status === 403)
 			return { ok: false, error: "Forbitten, API key might be invalid or you haven't authen Praevor with /auth" };
 
 		switch (json.code.split('')[0]) {

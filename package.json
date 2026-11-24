@@ -33,7 +33,7 @@
 		"@sapphire/ts-config": "^6.0.0",
 		"@types/node": "^26.6.6",
 		"@types/pg": "^8.23.1",
-		"drizzle-kit": "1.0.0-rc.5",
+		"drizzle-kit": "1.0.0-rc.6",
 		"eslint": "^9.37.0",
 		"eslint-config-neon": "^0.5.4",
 		"eslint-formatter-compact": "^9.0.1",

@@ -10,7 +10,13 @@ const allIntents = Object.values(GatewayIntentBits).filter((value): value is Gat
 );
 const client = new Client({
 	intents: allIntents,
-	presence: { status: 'online', activities: [{ name: 'ERLC servers', type: ActivityType.Watching }] },
+	presence: {
+		status: 'online',
+		activities: [
+			{ name: 'ERLC servers', type: ActivityType.Watching },
+			{ name: 'custom', type: ActivityType.Custom, state: 'Support server: discord.gg/MQFV52pFAQ' },
+		],
+	},
 });
 
 // Load the events and commands

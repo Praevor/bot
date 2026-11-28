@@ -2,6 +2,14 @@ import { Result } from '../types/Result.js';
 import { callERLCapi } from './callERLCapi.js';
 import { getServerKey } from './getServerKey.js';
 
+/**
+ *
+ * @param guildId the discord guild id
+ * @param username the roblox username of the target
+ * @param userId the roblox id of the targer
+ * @param location object of the X and Z cords
+ * @returns nothing if success
+ */
 export async function teleportPlayer(
 	guildId: string,
 	username: string,

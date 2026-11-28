@@ -5,6 +5,7 @@ import { teleportPlayer } from '../../util/teleportPlayer.js';
 import { getServerKey } from '../../util/getServerKey.js';
 import { callERLCapi } from '../../util/callERLCapi.js';
 import { Player } from '../../types/Player.js';
+import { sendLog } from '../../util/sendLog.js';
 
 export default {
 	data: {
@@ -85,5 +86,11 @@ export default {
 		}
 
 		await interaction.editReply('Teleported!');
+
+		await sendLog(
+			'Player teleported',
+			`Ran by: <@${interaction.member?.user.id}> \nUsername: ${username} \nLocation: X: ${x} Z: ${z}`,
+			interaction.guildId,
+		);
 	},
 } satisfies Command;

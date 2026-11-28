@@ -69,6 +69,9 @@ export default {
 				player.WantedStars,
 				'**Vehicle**',
 				`${vehicle ? `Name: ${vehicle.Name} \nPlate: ${vehicle.Plate} \nColor: ${vehicle.ColorName} \nTexture: ${vehicle.Texture ?? 'N/A'}` : 'N/A'}`,
+				'**Location**',
+				`X: ${player.Location.LocationX}, Z: ${player.Location.LocationZ}`,
+				`Postal code: ${player.Location.PostalCode}, Street Name: ${player.Location.StreetName}, Building Number: ${player.Location.BuildingNumber}`,
 			].join('\n'),
 		};
 

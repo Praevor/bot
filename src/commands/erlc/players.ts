@@ -43,12 +43,7 @@ export default {
 
 		const embed: APIEmbed = {
 			title: 'ERLC Players',
-			description: players
-				.map(
-					(p) =>
-						`**${p.Player.split(':')[0]}** \n[Roblox profile](https://roblox.com/users/${p.Player.split(':')[1]}) \n${p.Team} ${p.Callsign ? `(${p.Callsign})` : ''} \nWanted Stars ${p.WantedStars}`,
-				)
-				.join('\n'),
+			description: players.map((p) => `**${p.Player.split(':')[0]}**`).join('\n'),
 		};
 
 		await interaction.editReply({ embeds: [embed], content: 'Map of players is being made...' });
